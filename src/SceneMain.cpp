@@ -32,6 +32,7 @@ void SceneMain::init() {
     player.texture = IMG_LoadTexture(game.getRenderer(), "assets/image/SpaceShip.png");
     if(player.texture == NULL) {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to load player texture: %s", IMG_GetError());
+        return;
     }
     SDL_QueryTexture(player.texture, NULL, NULL, &player.width, &player.height);
     player.width /=4;
@@ -40,7 +41,11 @@ void SceneMain::init() {
     player.position.y = game.getWindowHeight() - player.height;
 
     //init bullet template
-    projectilePlayerTemplate.texture = IMG_LoadTexture(game.getRenderer(), "assets/image/laser1.png");
+    projectilePlayerTemplate.texture = IMG_LoadTexture(game.getRenderer(), "assets/image/laser-1.png");
+    if(projectilePlayerTemplate.texture == NULL) {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to load projectile texture: %s", IMG_GetError());
+        return;
+    }
     SDL_QueryTexture(projectilePlayerTemplate.texture, NULL, NULL, &projectilePlayerTemplate.width, &projectilePlayerTemplate.height);
     projectilePlayerTemplate.width /= 4;
     projectilePlayerTemplate.height /= 4;
