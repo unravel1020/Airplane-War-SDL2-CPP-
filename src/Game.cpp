@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "SceneMain.h"
 #include <SDL.h>
+#include <SDL_image.h>
 
 Game::Game()
 {
@@ -14,13 +15,14 @@ Game::~Game()
 
 void Game::init()
 {
+    frameTime = 1000 / FPS;
     if(SDL_Init(SDL_INIT_EVERYTHING) != 0){
         SDL_LogError(SDL_LOG_CATEGORY_ERROR, "SDL_Init Error: %s", SDL_GetError());
         isRunning = false;
     }
 
     //build the window
-    window = SDL_CreateWindow("AirPlane war", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, 0);
+    window = SDL_CreateWindow("AirPlane war", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, windowWidth, windowHeight, 0);
     if(window == nullptr){
         SDL_LogError(SDL_LOG_CATEGORY_ERROR, "SDL_CreateWindow could not be created. %s", SDL_GetError());
         isRunning = false;
@@ -33,13 +35,18 @@ void Game::init()
         isRunning = false;
     }
 
+    if(IMG_Init(IMG_INIT_PNG) != IMG_INIT_PNG){
+        SDL_LogError(SDL_LOG_CATEGORY_ERROR, "IMG_Init Error. %s", IMG_GetError());
+        isRunning = false;
+    }
+
     currentScene = new SceneMain();
     currentScene -> init();
 }
 
-void Game::update() 
+void Game::update(float deltaTime) 
 {
-    currentScene -> update();
+    currentScene -> update(deltaTime);
 }
 
 
@@ -58,10 +65,22 @@ void Game::clean()
 void Game::run()
 {
     while(isRunning){
+        auto frameStart = SDL_GetTicks();
+
         SDL_Event e;
         handleEvent(&e);
-        update();
+        update(deltaTime);
         render();
+
+        auto frameEnd = SDL_GetTicks();
+        auto diff = frameEnd - frameStart;
+
+        if(diff < frameTime){
+            SDL_Delay(frameTime - diff);
+            deltaTime = frameTime / 1000.0f;
+        }else{
+            deltaTime = diff / 1000.0f;
+        }
     }
 }
 
@@ -93,3 +112,4 @@ void Game::render()
 
     SDL_RenderPresent(renderer);
 }
+
