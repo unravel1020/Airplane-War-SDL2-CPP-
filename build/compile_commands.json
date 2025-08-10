@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/home/unravel/桌面/sdlShooter/build",
+  "command": "/usr/bin/g++ -isystem /usr/include/SDL2 -g -std=gnu++17 -Wall -Wextra -Werror -o CMakeFiles/SDLShooter-Linux.dir/src/main.cpp.o -c /home/unravel/桌面/sdlShooter/src/main.cpp",
+  "file": "/home/unravel/桌面/sdlShooter/src/main.cpp",
+  "output": "CMakeFiles/SDLShooter-Linux.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/unravel/桌面/sdlShooter/build",
+  "command": "/usr/bin/g++ -isystem /usr/include/SDL2 -g -std=gnu++17 -Wall -Wextra -Werror -o CMakeFiles/SDLShooter-Linux.dir/src/Game.cpp.o -c /home/unravel/桌面/sdlShooter/src/Game.cpp",
+  "file": "/home/unravel/桌面/sdlShooter/src/Game.cpp",
+  "output": "CMakeFiles/SDLShooter-Linux.dir/src/Game.cpp.o"
+},
+{
+  "directory": "/home/unravel/桌面/sdlShooter/build",
+  "command": "/usr/bin/g++ -isystem /usr/include/SDL2 -g -std=gnu++17 -Wall -Wextra -Werror -o CMakeFiles/SDLShooter-Linux.dir/src/SceneMain.cpp.o -c /home/unravel/桌面/sdlShooter/src/SceneMain.cpp",
+  "file": "/home/unravel/桌面/sdlShooter/src/SceneMain.cpp",
+  "output": "CMakeFiles/SDLShooter-Linux.dir/src/SceneMain.cpp.o"
+}
+]

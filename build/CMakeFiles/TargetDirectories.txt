@@ -1,0 +1,3 @@
+/home/unravel/桌面/sdlShooter/build/CMakeFiles/SDLShooter-Linux.dir
+/home/unravel/桌面/sdlShooter/build/CMakeFiles/edit_cache.dir
+/home/unravel/桌面/sdlShooter/build/CMakeFiles/rebuild_cache.dir
